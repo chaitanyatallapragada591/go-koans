@@ -7,7 +7,7 @@ func aboutPointers() {
 
 		b++
 
-		assert(a == __int__) // variables are independent of one another
+		assert(a == 3) // variables are independent of one another
 	}
 
 	{
