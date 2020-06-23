@@ -10,17 +10,22 @@ func isPrimeNumber(possiblePrime int) bool {
 }
 
 func findPrimeNumbers(channel chan int) {
-	for i := 2; ; /* infinite loop */ i++ {
+	for i := 2; i < 100; i++ {
 		// your code goes here
-
-		assert(i < 100) // i is afraid of heights
+		if isPrimeNumber(i) {
+			channel <- i
+			// i is afraid of heights
+		}
+		assert(i < 100)
 	}
 }
 
 func aboutConcurrency() {
 	ch := make(chan int)
 
-	assert(__delete_me__) // concurrency can be almost trivial
+	go findPrimeNumbers(ch)
+
+	//assert(__delete_me__) // concurrency can be almost trivial
 	// your code goes here
 
 	assert(<-ch == 2)
